@@ -8,6 +8,7 @@ gunicorn = "*"
 flask = "*"
 flask-sqlalchemy = "*"
 sqlalchemy-serializer = "*"
+flask-cors = "*"
 
 [dev-packages]
 
