@@ -1,8 +1,8 @@
-"""Updates table
+"""updated table
 
-Revision ID: 2388096a0e3a
+Revision ID: 61607e36de8e
 Revises: 
-Create Date: 2024-10-17 12:44:46.500260
+Create Date: 2024-10-23 13:32:26.657090
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '2388096a0e3a'
+revision = '61607e36de8e'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -26,7 +26,7 @@ def upgrade():
     )
     op.create_table('users',
     sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('username', sa.String(length=40), nullable=False),
+    sa.Column('username', sa.String(length=80), nullable=False),
     sa.Column('email', sa.String(length=120), nullable=False),
     sa.Column('name', sa.String(length=80), nullable=False),
     sa.Column('password', sa.String(length=60), nullable=False),
@@ -41,8 +41,7 @@ def upgrade():
     sa.Column('team', sa.String(length=120), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=False),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], name=op.f('fk_teams_user_id_users')),
-    sa.PrimaryKeyConstraint('id'),
-    sa.UniqueConstraint('title')
+    sa.PrimaryKeyConstraint('id')
     )
     op.create_table('user_projects',
     sa.Column('user_id', sa.Integer(), nullable=False),
